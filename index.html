@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Go Pro Web Solutions - Ajax in jQuery Way</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://www.steamdev.com/snippet/css/jquery.snippet.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      body{padding-top:45px;}
+      .bs-callout {
+padding: 20px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 5px;
+border-radius: 3px;
+}
+.bs-callout h1,
+.bs-callout h2,
+.bs-callout h3,
+.bs-callout h4,
+.bs-callout h5,
+.bs-callout h6 {
+margin-top: 0;
+}
+.bs-callout-danger h1,
+.bs-callout-danger h2,
+.bs-callout-danger h3,
+.bs-callout-danger h4,
+.bs-callout-danger h5,
+.bs-callout-danger h6 {
+color: #B94A48;
+}
+.bs-callout-warning h1,
+.bs-callout-warning h2,
+.bs-callout-warning h3,
+.bs-callout-warning h4,
+.bs-callout-warning h5,
+.bs-callout-warning h6 {
+color: #C09853;
+}
+.bs-callout-info h1,
+.bs-callout-info h2,
+.bs-callout-info h3,
+.bs-callout-info h4,
+.bs-callout-info h5,
+.bs-callout-info h6 {
+color: #3A87AD;
+}
+.bs-callout-success h1,
+.bs-callout-success h2,
+.bs-callout-success h3,
+.bs-callout-success h4,
+.bs-callout-success h5,
+.bs-callout-success h6 {
+color: #3C763D;
+}
+.bs-callout p:last-child {
+margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+background-color: #fff;
+}
+/* Themes for different contexts */
+.bs-callout-danger {
+background-color: #fcf2f2;
+border-color: #dFb5b4;
+}
+.bs-callout-warning {
+background-color: #fefbed;
+border-color: #f1e7bc;
+}
+.bs-callout-info {
+background-color: #f0f7fd;
+border-color: #d0e3f0;
+}
+.bs-callout-success {
+background-color: #dff0d8;
+border-color: #d6e9c6;
+}
+    </style>
+  </head>
+  <body>
+  
+    <div class="container">
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header"><a class="navbar-brand" href="#">Brand</a></div>
+    <ul class="nav navbar-nav">
+     <li class="active"><a href="#">Home</a></li>
+     <li><a href="#">Link</a></li>
+     <li><a href="#">More</a></li>
+     <li><a href="#">Options</a></li>
+      </ul>
+</div>
+<div class="page-header">
+  <h1>Ajax in jQuery Way <small>A Non-Programmer Approach!</small></h1>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+    <h4>I am not a Programmer</h4>
+    <p>Well, I know how to programming a little bit but I am not as good as you.</p>
+  </div>
+      There Several Ways
+
+1- Serialize Form
+
+2- Single Item Post
+
+    <pre class="js">
+         var username = $('#username').val(); 
+         var data = 'uname=' + username; 
+         
+         var req = $.ajax({
+                            type: "POST",            
+                            url: "filemaker.php",
+                            dataType: "html",          
+                            data: data           
+          });
+    </pre>      
+          .php:
+          <pre class="php">
+          $userName = $_POST['uname']); 
+</pre> 
+3- Multipile Item Post
+
+A: Initialize data out of the ajax method:
+
+ <pre class="js">
+
+        //var name = $('.uname').val(); 
+        //var pwd = $('.passwd').val(); 
+        //var data='uname='+name+'&password='+pwd; 
+        
+        var name = "FILE"; 
+        var pwd = "NAMA"; 
+        var data='uname='+name+'&password='+pwd; 
+   </pre>        
+        Then Pass data into data
+ 
+
+B: Initialize data inside the ajax call on data property
+
+          .js:
+            <pre class="js">
+         var req = $.ajax({
+                            type: "POST",            
+                            url: "filemaker.php",
+                            dataType: "html",          
+                            data: { dir: "John", word: "Boston"}          
+          });
+          </pre>
+          
+          .php:
+           <pre class="php">
+              $dir  = trim($_POST['dir']); 
+              $word = trim($_POST['word']);
+              
+</pre>
+be aware that the data array also can be very straight like 
+
+                             data: { dir: $('#files :selected').text(), word: $("#fword").val()} 
+      
+    <pre class="js">
+&lt;script>
+$.ajax({
+  url: "test.html",
+  context: document.body
+}).done(function() {
+  $( this ).addClass( "done" );
+});
+&lt;/script&gt;
+</pre>
+      
+    </div><!-- End of Container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+   <script src="http://www.steamdev.com/snippet/js/jquery.snippet.min.js"></script>
+  <script>
+   $(function() {
+ $("pre.js").snippet("javascript",{style:"acid",transparent:false,showNum:true});
+ $("pre.php").snippet("php",{style:"acid",transparent:false,showNum:true});
+});
+</script>
+  </body>
+</html>
