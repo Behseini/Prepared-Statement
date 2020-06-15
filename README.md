@@ -16,6 +16,8 @@ $stmt -> fetch();
 echo $name;
 echo $email;
 
+$stmt->free_result();
+$stmt->close();
 ```
 
 <h5> 1.2. SELECT - Selecting Multiple Rows</h5> 
