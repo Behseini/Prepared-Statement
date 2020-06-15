@@ -4,9 +4,10 @@ PHP My SQLi Prepared Statement
 <hr style="border-color:gold !important;"/>
 
 ```PHP
+$uid = $_POST['cuid'];
 $stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE id = ?'); 
-$userId = 1;
 $stmt -> bind_param('i', $userId); 
+$userId = $uid;
 $stmt -> execute(); 
 $stmt -> store_result(); 
 $stmt -> bind_result($name, $email); 
