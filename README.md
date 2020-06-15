@@ -1,7 +1,7 @@
 PHP My SQLi Prepared Statement
 
 <h5> 1.1. SELECT - Selecting one row</h5> 
-<hr />
+<hr style="border-color:gold;"/>
 
 ```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE id = ?'); 
