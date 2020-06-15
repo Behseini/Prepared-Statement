@@ -20,6 +20,32 @@ $stmt->free_result();
 $stmt->close();
 ```
 
+```php
+$sql = "SELECT name, email FROM users WHERE id = ?";
+
+if($stmt = $mysqli->prepare($sql)){
+	$stmt->bind_param("s", $userId);
+	$userId = $uid;
+	if($stmt->execute()){
+		$stmt->store_result();
+			$stmt->bind_result($name, $email);
+			if($stmt->fetch()){
+				echo $name;
+				echo $email;
+			}
+		$stmt->free_result();
+		$stmt->close();
+	} else{
+		echo "Oops! Something went wrong. Please try again later.";
+	}
+}
+else{
+	echo "Oops! Something went wrong. Please try again later.";
+}
+```
+
+
+
 <h5> 1.1. SELECT - Selecting one row</h5> 
 <hr style="border-color:gold !important;"/>
 
