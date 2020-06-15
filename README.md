@@ -1,6 +1,6 @@
 PHP My SQLi Prepared Statement
 
-<h5> 1.1 SELECT - Selecting one row</h5> 
+<h5> 1.1. SELECT - Selecting one row</h5> 
 <hr />
 
 ```PHP
@@ -17,7 +17,7 @@ echo $email;
 
 ```
 
-<h5> 1.2 SELECT - Selecting Multiple Rows</h5> 
+<h5> 1.2. SELECT - Selecting Multiple Rows</h5> 
 <hr />
 
 ```PHP
@@ -32,8 +32,8 @@ while ($stmt -> fetch()) {
 
 ```
 
-3. SELECT - Getting Number of Selected Rows
-
+<h5> 1.3. SELECT - Getting Number of Selected Rows</h5> 
+<hr />
 
 ```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users');
@@ -42,13 +42,24 @@ $stmt -> execute();
 $stmt -> store_result();
 
 echo $stmt -> num_rows;
-4. SELECT - Get Results
+
+
+<h5> 1.4. SELECT - Get Results</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE id > ?');
 $greaterThan = 1;
 $stmt -> bind_param('i', $greaterThan);
 $stmt -> execute();
 $result = $stmt -> get_result();
-5. SELECT - With Wildcards
+
+```
+
+<h5>5. SELECT - With Wildcards</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE name LIKE ?');
 
 $like = 'a%';
@@ -61,7 +72,13 @@ while ($stmt -> fetch()) {
 	echo $name;
 	echo $email;
 }
-6. SELECT - With An Array of IDs
+
+```
+
+<h5>6. SELECT - With An Array of IDs</h5> 
+<hr />
+
+```PHP
 // array of user IDs
 $userIdArray = [1,2,3,4];
 // number of question marks
@@ -84,6 +101,9 @@ while ($stmt -> fetch()) {
 	echo $name;
 	echo $email;
 }
+
+```
+
 7. SELECT - LIMIT and OFFSET
 $stmt = $mysqli -> prepare("SELECT name, email FROM users LIMIT ? OFFSET ?");
 
