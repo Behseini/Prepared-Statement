@@ -1,6 +1,6 @@
 PHP My SQLi Prepared Statement
 
-<h5> 1. SELECT - Selecting one row</h5> 
+<h5> 1.1 SELECT - Selecting one row</h5> 
 <hr />
 
 ```PHP
@@ -17,8 +17,8 @@ echo $email;
 
 ```
 
-2. SELECT - Selecting Multiple Rows
-
+<h5> 1.2 SELECT - Selecting Multiple Rows</h5> 
+<hr />
 
 ```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users'); 
