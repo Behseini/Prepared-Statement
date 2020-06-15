@@ -1,7 +1,21 @@
 PHP My SQLi Prepared Statement
 
-<h4> 1. SELECT - Selecting one row
+<h5> 1. SELECT - Selecting one row</h5> 
+<hr />
 
+
+
+```PHP
+$stmt = $mysqli -> prepare('SELECT name, email FROM users'); 
+$stmt -> execute(); 
+$stmt -> store_result(); 
+$stmt -> bind_result($name, $email); 
+while ($stmt -> fetch()) { 
+    echo $name; 
+    echo $email; 
+}
+
+```
 
 ```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE id = ?'); 
