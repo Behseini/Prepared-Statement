@@ -1,7 +1,7 @@
 PHP My SQLi Prepared Statement
 
 <h5> 1.1. SELECT - Selecting one row</h5> 
-<hr style="border-color:gold;"/>
+<hr style="border-color:gold !important;"/>
 
 ```PHP
 $stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE id = ?'); 
@@ -104,7 +104,10 @@ while ($stmt -> fetch()) {
 
 ```
 
-7. SELECT - LIMIT and OFFSET
+<h5>1.7. SELECT - LIMIT and OFFSET</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare("SELECT name, email FROM users LIMIT ? OFFSET ?");
 
 // limit of rows
@@ -121,7 +124,12 @@ while ($stmt -> fetch()) {
 	echo $name;
 	echo $email;
 }
-8. SELECT - BETWEEN
+```
+
+<h5> 1.8. SELECT - BETWEEN</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare("SELECT name, email FROM users WHERE id BETWEEN ? AND ?");
 
 $betweenStart = 2;
@@ -136,7 +144,12 @@ while ($stmt -> fetch()) {
 	echo $name;
 	echo $email;
 }
-9. INSERT - One Row
+```
+
+<h5> 2. INSERT - One Row</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare('INSERT INTO users (name, email) VALUES (?,?)');
 
 $name = 'John';
@@ -154,7 +167,13 @@ $stmt -> bind_param('ss', $name, $email);
 $stmt -> execute();
 
 echo 'Your account id is ' . $stmt -> insert_id;
-11. INSERT - Multiple Rows (Recursive)
+
+```
+
+<h5> 11. INSERT - Multiple Rows (Recursive)</h5> 
+<hr />
+
+```PHP
 $newUsers = [
 	[ 'sulliops', 'sulliops@gmail.com' ],
 	[ 'infinity', 'infinity@gmail.com' ],
@@ -174,7 +193,12 @@ foreach ($newUsers as $user) {
 	echo "{$name}'s account id is {$stmt -> insert_id}";
 
 }
-12. UPDATE
+```
+
+<h5> 12. UPDATE</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare('UPDATE users SET email = ? WHERE id = ? LIMIT 1');
 	
 $email = 'newemail@hyvor.com';
@@ -182,7 +206,12 @@ $id = 2;
 
 $stmt -> bind_param('si', $email, $id);
 $stmt -> execute();
-13. UPDATE - Get Affected Rows
+```
+
+<h5>13. UPDATE - Get Affected Rows</h5> 
+<hr />
+
+```PHP
 $stmt = $mysqli -> prepare('UPDATE users SET email = ? WHERE name = ? LIMIT 1');
 	
 $email = 'newemail@hyvor.com';
@@ -203,3 +232,5 @@ $stmt -> execute();
 
 // number of deleted rows
 echo $stmt -> affected_rows;
+
+```
