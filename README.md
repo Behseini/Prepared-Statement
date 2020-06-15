@@ -56,7 +56,7 @@ $result = $stmt -> get_result();
 
 ```
 
-<h5>5. SELECT - With Wildcards</h5> 
+<h5>1.5. SELECT - With Wildcards</h5> 
 <hr />
 
 ```PHP
@@ -75,7 +75,7 @@ while ($stmt -> fetch()) {
 
 ```
 
-<h5>6. SELECT - With An Array of IDs</h5> 
+<h5>1.6. SELECT - With An Array of IDs</h5> 
 <hr />
 
 ```PHP
