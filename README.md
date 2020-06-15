@@ -1,5 +1,25 @@
 PHP My SQLi Prepared Statement
 
+<h5> 1.1. SELECT - Check existence of one Value</h5><small>If user or email exist in database</small> 
+<hr style="border-color:gold !important;"/>
+
+```PHP
+$uid = $_POST['cuid'];
+$stmt = $mysqli -> prepare('SELECT name, email FROM users WHERE id = ?'); 
+$stmt -> bind_param('i', $userId); 
+$userId = $uid;
+$stmt -> execute(); 
+$stmt -> store_result(); 
+$stmt -> bind_result($name, $email); 
+$stmt -> fetch();
+ 
+echo $name;
+echo $email;
+
+$stmt->free_result();
+$stmt->close();
+```
+
 <h5> 1.1. SELECT - Selecting one row</h5> 
 <hr style="border-color:gold !important;"/>
 
