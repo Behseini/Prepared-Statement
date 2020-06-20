@@ -42,9 +42,47 @@ if($conn->query($sql2) === true){
 $conn->close(); 
 
 ?>
+```
 
+<hr />
+Querying
+
+```php
+<?php
+$database = "CODINGGROUND";
+$dsn = "localhost";
+$username = 'root';
+$password = 'root';
+
+$conn = new mysqli($dsn, $username, $password, $database);
+ 
+$sql = 'SELECT `id`, `fname`, `lname`, `age`, `email` FROM persons';
+//$sql = 'SELECT * FROM users';
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$stmt -> store_result();
+$stmt -> bind_result($id, $fname, $lname, $age, $email);
+//======================================================= One
+// while($stmt->fetch()){
+//   $items[] = compact('id', 'fname', 'lname', 'age', 'email');
+// }
+// print_r($items);
+//======================================================= Two
+$items= array();
+while($stmt->fetch()){
+  array_push($items, array('id'=>$id, 'fname'=>$fname, 'lname'=>$lname, 'age'=>$age, 'email'=>$email));
+}
+print_r($items);
+//======================================================= Three
+// $items= array();
+// while($row = $stmt->fetch(MYSQLI_ASSOC)){
+//   //array_push($items, $row);
+//   print_r($row);
+// }
+//print_r($items);
 ?>
 ```
+
 That's because fetch_assoc is not part of a mysqli_stmt object. fetch_assoc belongs to the mysqli_result class. You can use mysqli_stmt::get_result to first get a result object and then call fetch_assoc:
 
 ```php
@@ -68,38 +106,4 @@ while($selectUser->fetch())
 }
 ```
 
-```php
-<?php
-$database = "CODINGGROUND";
-$dsn = "localhost";
-$username = 'root';
-$password = 'root';
 
-$conn = new mysqli($dsn, $username, $password, $database);
- 
-$sql = 'SELECT `id`, `name`, `age`, `sex` FROM users';
-//$sql = 'SELECT * FROM users';
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$stmt -> store_result();
-$stmt -> bind_result($id, $name, $age, $sex);
-//======================================================= One
-// while($stmt->fetch()){
-//   $items[] = compact('id', 'name', 'age', 'sex');
-// }
-// print_r($items);
-//======================================================= Two
-// $items= array();
-// while($stmt->fetch()){
-//   array_push($items, array('id'=>$id, 'name'=>$name, 'age'=>$age, 'sex'=>$sex));
-// }
-// print_r($items);
-//======================================================= Three
-$items= array();
-while($row = $stmt->fetch(MYSQLI_ASSOC)){
-   //array_push($items, $row);
-   print_r($row);
-}
-//print_r($items);
-?>
-```
