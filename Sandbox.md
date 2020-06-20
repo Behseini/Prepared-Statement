@@ -1,3 +1,5 @@
+[https://www.tutorialspoint.com/php_mysql_online.php](Sandbox Address)
+
 That's because fetch_assoc is not part of a mysqli_stmt object. fetch_assoc belongs to the mysqli_result class. You can use mysqli_stmt::get_result to first get a result object and then call fetch_assoc:
 
 ```php
