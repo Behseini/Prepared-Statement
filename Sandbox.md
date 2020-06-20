@@ -95,7 +95,14 @@ while($stmt->fetch()){
   array_push($items, array('id'=>$id, 'fname'=>$fname, 'lname'=>$lname, 'age'=>$age, 'email'=>$email));
 }
 print_r($items);
+
 //======================================================= Three
+//$items= array();
+//while($stmt->fetch()){
+//array_push($items, ['id'=>$id, 'fname'=>$fname, 'lname'=>$lname, 'age'=>$age, 'email'=>$email]);
+//}
+//print_r($items);
+//======================================================= Four is woyking with Get Result
 // $items= array();
 // while($row = $stmt->fetch(MYSQLI_ASSOC)){
 //   //array_push($items, $row);
