@@ -24,6 +24,7 @@ $conn->close();
 
 <h5> Create Table and Load Data </h5>
 <hr />
+
 ```php
 <?php
 $database = "GEOCA";
@@ -67,7 +68,6 @@ $conn->close();
 
 <h5> Querying </h5>
 <hr />
-
 
 ```php
 <?php
