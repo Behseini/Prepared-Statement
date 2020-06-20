@@ -2,7 +2,9 @@
 
 <h5> Create Database </h5>
 <hr />
+
 ```php
+
 <?php
 $dsn = "localhost";
 $username = 'root';
