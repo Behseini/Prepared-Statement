@@ -1,5 +1,44 @@
 [Sandbox Address](https://www.tutorialspoint.com/php_mysql_online.php)
 
+Setup
+<hr />
+
+```php
+<?php
+$database = "CODINGGROUND";
+$dsn = "localhost";
+$username = 'root';
+$password = 'root';
+
+$conn = new mysqli($dsn, $username, $password, $database);
+$sql = "CREATE TABLE persons(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    email VARCHAR(70) NOT NULL UNIQUE
+)";
+if($conn->query($sql) === true){
+    echo "Table created successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $conn->error;
+}
+
+
+$sql2 = "INSERT INTO persons (first_name, last_name, email) VALUES
+            ('John', 'Rambo', 'johnrambo@mail.com'),
+            ('Clark', 'Kent', 'clarkkent@mail.com'),
+            ('John', 'Carter', 'johncarter@mail.com'),
+            ('Harry', 'Potter', 'harrypotter@mail.com')";
+if($conn->query($sql2) === true){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $conn->error;
+}
+ 
+$conn->close(); 
+
+?>
+```
 That's because fetch_assoc is not part of a mysqli_stmt object. fetch_assoc belongs to the mysqli_result class. You can use mysqli_stmt::get_result to first get a result object and then call fetch_assoc:
 
 ```php
