@@ -11,24 +11,28 @@ $username = 'root';
 $password = 'root';
 
 $conn = new mysqli($dsn, $username, $password, $database);
+
 $sql = "CREATE TABLE persons(
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    email VARCHAR(70) NOT NULL UNIQUE
-)";
+            id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            fname VARCHAR(30) NOT NULL,
+            lname VARCHAR(30) NOT NULL,
+            age INT(3) NOT NULL,
+            email VARCHAR(70) NOT NULL UNIQUE
+    )";
 if($conn->query($sql) === true){
     echo "Table created successfully.";
 } else{
     echo "ERROR: Could not able to execute $sql. " . $conn->error;
 }
 
-
-$sql2 = "INSERT INTO persons (first_name, last_name, email) VALUES
-            ('John', 'Rambo', 'johnrambo@mail.com'),
-            ('Clark', 'Kent', 'clarkkent@mail.com'),
-            ('John', 'Carter', 'johncarter@mail.com'),
-            ('Harry', 'Potter', 'harrypotter@mail.com')";
+$sql2 = "INSERT INTO persons (fname, lname, age, email) VALUES
+            ('John', 'Rambo', 33, 'johnrambo@mail.com'),
+            ('Sandra', 'Bullock', 55, 'sandrabullock@mail.com'),
+            ('Karen', 'Gillan',32, 'karengillan@mail.com'),            
+            ('Clark', 'Kent', 45, 'clarkkent@mail.com'),
+            ('John', 'Carter',28, 'johncarter@mail.com'),
+            ('Jessica', 'Alba',39, 'jessicaalba@mail.com'),
+            ('Harry', 'Potter',18, 'harrypotter@mail.com')";
 if($conn->query($sql2) === true){
     echo "Records inserted successfully.";
 } else{
@@ -36,6 +40,8 @@ if($conn->query($sql2) === true){
 }
  
 $conn->close(); 
+
+?>
 
 ?>
 ```
