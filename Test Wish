@@ -1,0 +1,34 @@
+<?php
+$database = "GEOCA";
+$dsn = "localhost";
+$username = 'root';
+$password = 'root';
+
+$conn = new mysqli($dsn, $username, $password, $database);
+
+$sql = "CREATE TABLE `gusuwish` (
+        `id` int(10) NOT NULL,
+        `wishid` varchar(20) NOT NULL,
+        `wishitems` varchar(300) NOT NULL,
+        `lastviewd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+
+
+if($conn->query($sql) === true){
+    echo "Table created successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $conn->error;
+}
+
+$sql2 = "INSERT INTO `gusuwish` (`id`, `wishid`, `wishitems`, `lastviewd`) VALUES
+(1, '200726-gToGWy9Z', 'mu-2,mu-5', '2020-07-26 06:45:50')";
+
+if($conn->query($sql2) === true){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $conn->error;
+}
+ 
+$conn->close(); 
+
+;
