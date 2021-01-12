@@ -2,7 +2,11 @@ PHP My SQLi Prepared Statement
 
 <h5> 1.1. SELECT - Check existence of one Value</h5><small>If user or email exist in database</small> 
 <hr style="border-color:gold !important;"/>
-<img  src="https://www.screencast.com/t/B3i8Ycr3e" />
+<p align="center">
+  <img src="your_relative_path_here" width="350" title="hover text">
+  <img src=https://www.screencast.com/t/B3i8Ycr3e" width="350" alt="accessibility text">
+</p>
+<img  src="" />
 ![alt text](https://www.screencast.com/t/B3i8Ycr3e)
 
 ```PHP
