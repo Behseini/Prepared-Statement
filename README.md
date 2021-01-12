@@ -1,5 +1,7 @@
 PHP My SQLi Prepared Statement
 
+![stack Overflow](http://lmsotfy.com/so.png)
+
 <h5> 1.1. SELECT - Check existence of one Value</h5><small>If user or email exist in database</small> 
 <hr style="border-color:gold !important;"/>
 <p align="center">
